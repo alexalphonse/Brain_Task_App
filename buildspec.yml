@@ -18,11 +18,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - docker push $IMAGE_URI
-      - echo "Writing Kubernetes manifests..."
-      - sed -i "s|<AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/brain-tasks-app:latest|$IMAGE_URI|" k8s/deployment.yaml
-      - kubectl apply -f k8s/deployment.yaml
-      - kubectl apply -f k8s/service.yaml
-
+      
 artifacts:
   files:
     - k8s/*.yaml
